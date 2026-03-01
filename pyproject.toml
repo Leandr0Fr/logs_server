@@ -1,6 +1,6 @@
 [project]
 name = "logs-server"
-version = "0.1.0"
+version = "1.0.0"
 description = "Un servidor para almacenar Logs de diferentes aplicaciones e instancias de estas mismas."
 authors = [
     {name = "Leandro Franco",email = "leandro00fr@gmail.com"}

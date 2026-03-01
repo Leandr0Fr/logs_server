@@ -13,4 +13,3 @@ def register_routes(app: FastAPI) -> None:
     Returns:
         None
     """
-    pass
