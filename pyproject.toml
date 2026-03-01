@@ -6,20 +6,23 @@ authors = [
     {name = "Leandro Franco",email = "leandro00fr@gmail.com"}
 ]
 readme = "README.md"
-packages = [{include = "src"}]
-
 requires-python = ">=3.12"
+
+[tool.poetry]
+package-mode = false
+
 
 [tool.poetry.dependencies]
 python = "3.12.3"
 fastapi = "0.116.1"
 uvicorn = "0.35.0"
-sqlalchemy = "2.0.42"
-asyncpg = "0.30.0"
 pydantic = "2.11.7"
 pydantic-settings = "2.10.1"
 alembic = "1.16.4"
 redis = "5.2.1"
+sqlmodel = "0.0.37"
+asyncpg = "0.31.0"
+greenlet = "3.3.2"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "8.4.1"
