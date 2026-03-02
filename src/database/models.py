@@ -13,7 +13,7 @@ class Log(SQLModel, table=True):
     type: LogType
     message: str
 
-    instance_id: int = Field(foreign_key="app_instance.id")
+    instance_id: int = Field(foreign_key="appinstance.id")
     instance: AppInstance = Relationship(back_populates="logs")
 
     created_at: datetime = Field(sa_column_kwargs={"server_default": func.now()})
