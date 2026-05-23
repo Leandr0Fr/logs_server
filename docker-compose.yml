@@ -36,7 +36,6 @@ services:
 
     volumes:
       - redis_data:/data
-
     networks:
       - backend-network
 
