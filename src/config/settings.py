@@ -42,18 +42,13 @@ class Settings(BaseSettings):
     """
 
     DATABASE_URL: str
-
-    POSTGRES_USER: str | None = None
-    POSTGRES_PASSWORD: str | None = None
-
-    REDIS_URL: str | None = None
-
+    REDIS_URL: str
     # Configuración de CORS
     BACKEND_CORS_ORIGINS: list[str] = ["*"]
 
     API_V1_STR: str = "/api/v1"
 
-    DEBUG: bool = False
+    DEBUG: bool
 
     model_config = SettingsConfigDict(
         env_file=".env",
