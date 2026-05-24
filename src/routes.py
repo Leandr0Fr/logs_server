@@ -1,15 +1,15 @@
-"""
-Registra las rutas de la API.
-"""
+"""Routers de la aplicación"""
 
 from fastapi import FastAPI
 
 
-def register_routes(app: FastAPI) -> None:
-    """
-    Agrega las rutas a la aplicación.
+
+def include_routers(app: FastAPI) -> None:
+    """Registra todos los routers de la aplicacion.
+
     Args:
-        app (FastAPI): La instancia de la aplicación FastAPI.
+        app: Instancia de FastAPI donde se montan routers.
+
     Returns:
-        None
+        None.
     """

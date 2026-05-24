@@ -3,35 +3,24 @@ Módulo principal de la aplicación.
 Inicializa la APP, registra las rutas y el lifespan.
 """
 
-from contextlib import asynccontextmanager
 from fastapi import FastAPI
-from src.routes import register_routes
+from fastapi.middleware.cors import CORSMiddleware
+from src.routes import include_routers
 from src.config.settings import settings
-from src.database.engine import async_engine
+from src.config.lifespan import lifespan
 
+app = FastAPI(
+    title="logs_system",
+    version="1.0.0",
+    debug=settings.DEBUG,
+    openapi_url=f"{settings.API_V1_STR}/openapi.json",
+    lifespan=lifespan,
+)
 
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    """Lifespan de la base de datos"""
-    yield
-    await async_engine.dispose()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=settings.BACKEND_CORS_ORIGINS,
+    allow_credentials=True,
+)
 
-
-def create_app() -> FastAPI:
-    """
-    Crea la aplicación FastAPI y registra las rutas.
-    Returns:
-        FastAPI: La instancia de la aplicación FastAPI.
-    """
-    app_fastapi = FastAPI(
-        title="logs_system",
-        version="1.0.0",
-        debug=settings.DEBUG,
-        openapi_url=f"{settings.API_V1_STR}/openapi.json",
-        lifespan=lifespan,
-    )
-    register_routes(app_fastapi)
-    return app_fastapi
-
-
-app = create_app()
+include_routers(app)
